@@ -1,5 +1,5 @@
 id: org.freedesktop.Platform.VulkanLayer.MangoHud
-default-branch: '21.08'
+branch: '21.08'
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
 runtime-version: '21.08'
