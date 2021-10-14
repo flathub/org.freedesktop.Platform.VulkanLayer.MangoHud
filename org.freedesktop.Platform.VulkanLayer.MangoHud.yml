@@ -69,8 +69,8 @@ modules:
         sources: &libNVCtrl-sources
           - type: archive
             archive-type: tar
-            url: https://api.github.com/repos/NVIDIA/nvidia-settings/tarball/refs/tags/470.63.01
-            sha256: 0ede63515851d85ac0d1ed5f00e355f539968e6d1fd226120a27b2c66c3575de
+            url: https://github.com/NVIDIA/nvidia-settings/archive/470.74/nvidia-settings-470.74.tar.gz
+            sha256: 73e9d42ff7a419c21682342a9f4fca645497a1c251d51dc8f65eadb7b40abd58
             x-checker-data:
               type: json
               url: https://api.github.com/repos/NVIDIA/nvidia-settings/tags
