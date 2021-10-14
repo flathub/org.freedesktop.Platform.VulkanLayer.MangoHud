@@ -74,8 +74,9 @@ modules:
             x-checker-data:
               type: json
               url: https://api.github.com/repos/NVIDIA/nvidia-settings/tags
-              url-query: .[0].tarball_url
-              version-query: .[0].name
+              version-query: first | .name
+              url-query: >-
+                "https://github.com/NVIDIA/nvidia-settings/archive/\($version)/nvidia-settings-\($version).tar.gz"
           - type: patch
             path: patches/libxnvctrl_so_0.patch
 
