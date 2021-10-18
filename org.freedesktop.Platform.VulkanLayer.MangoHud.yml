@@ -29,6 +29,8 @@ modules:
       - -Duse_system_vulkan=enabled
       - -Dwith_xnvctrl=enabled
       - -Dappend_libdir_mangohud=false
+      # FIXME: freedesktop-sdk lacks needed headers
+      - -Dwith_libdrm_amdgpu=disabled
     sources: &mangohud-sources
       - type: archive
         url: https://github.com/flightlessmango/MangoHud/releases/download/v0.6.6/MangoHud-v0.6.6-Source.tar.xz
