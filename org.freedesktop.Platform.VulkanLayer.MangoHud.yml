@@ -27,12 +27,14 @@ modules:
     buildsystem: meson
     config-opts: &mangohud-config-opts
       - -Duse_system_vulkan=enabled
+      - -Dvulkan_datadir=/usr/share
       - -Dwith_xnvctrl=enabled
+      - -Dwith_libdrm_amdgpu=disabled
       - -Dappend_libdir_mangohud=false
     sources: &mangohud-sources
       - type: archive
-        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.6.5/MangoHud-v0.6.5-Source.tar.xz
-        sha256: aa3f65ece217842c3be1b755c0f3a09b2096f0af475715d3619182a13c6f4fbf
+        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.6.6-1/MangoHud-v0.6.6-1-Source.tar.xz
+        sha256: d0e9c8ec6a2c19684edcf7e9fe015244326a783053c4a6c2782ee1792c6bf257
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flightlessmango/MangoHud/releases
@@ -43,15 +45,6 @@ modules:
             map(select(.tag_name | startswith("v"))) | first |
             .tag_name | sub("^[vV]"; "")
     modules:
-
-      - name: vulkan-registry
-        buildsystem: simple
-        build-commands:
-          - mkdir -p ${FLATPAK_DEST}/share/vulkan
-          - ln -sr /usr/share/vulkan/registry ${FLATPAK_DEST}/share/vulkan/registry
-        cleanup:
-          - '*'
-
       - python3-mako.json
 
       - name: libNVCtrl
