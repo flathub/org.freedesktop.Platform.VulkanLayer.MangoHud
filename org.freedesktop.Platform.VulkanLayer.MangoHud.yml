@@ -29,7 +29,6 @@ modules:
       - -Duse_system_vulkan=enabled
       - -Dvulkan_datadir=/usr/share
       - -Dwith_xnvctrl=enabled
-      - -Dwith_libdrm_amdgpu=disabled
       - -Dappend_libdir_mangohud=false
     sources: &mangohud-sources
       - type: archive
