@@ -1,8 +1,8 @@
 id: org.freedesktop.Platform.VulkanLayer.MangoHud
-branch: '21.08'
+branch: '22.08beta'
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: '21.08'
+runtime-version: '22.08beta'
 build-extension: true
 appstream-compose: false
 sdk-extensions:
