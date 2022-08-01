@@ -33,8 +33,8 @@ modules:
       - -Dappend_libdir_mangohud=false
     sources: &mangohud-sources
       - type: archive
-        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.6.7-1/MangoHud-v0.6.7-1-Source.tar.xz
-        sha256: 5f925a537e611d898db608dd93155ce3c4137326b21376c7d34333181e3da959
+        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.6.8/MangoHud-v0.6.8-Source.tar.xz
+        sha256: 9c64ccab1a72ba1dc61cb88d2fbcce1d343fc6b6cdf22c2cc2859bfb2da66fd4
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flightlessmango/MangoHud/releases
