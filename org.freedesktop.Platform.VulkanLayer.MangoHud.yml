@@ -35,6 +35,11 @@ x-arch-build-options:
       CXX: ccache i686-unknown-linux-gnu-g++
 cleanup:
   - /include
+  - /share/pkgconfig
+  - /lib/*/pkgconfig
+  - /lib/*/cmake
+  - /lib/*/*.a
+  - /lib/*/*.la
 modules:
 
   - name: MangoHud
@@ -66,6 +71,53 @@ modules:
     modules:
       - python3-mako.json
 
+      - name: glew
+        build-options: *x86_64-build-options
+        no-autogen: true
+        make-args: &glew-make-args
+          - GLEW_PREFIX=${FLATPAK_DEST}
+          - GLEW_DEST=${FLATPAK_DEST}
+          - LIBDIR=${FLATPAK_LIBDIR}
+          - PKGDIR=${FLATPAK_LIBDIR}/pkgconfig
+          - CFLAGS.EXTRA:=${CFLAGS} -fPIC
+          - LDFLAGS.EXTRA=${LDFLAGS}
+        make-install-args: *glew-make-args
+        sources: &glew-sources
+          - type: archive
+            url: https://downloads.sourceforge.net/project/glew/glew/2.2.0/glew-2.2.0.tgz
+            sha256: d4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1
+        modules:
+          - name: glu
+            build-options: *x86_64-build-options
+            sources: &glu-sources
+              - type: archive
+                url: https://mesa.freedesktop.org/archive/glu/glu-9.0.2.tar.xz
+                sha256: 6e7280ff585c6a1d9dfcdf2fca489251634b3377bfc33c29e4002466a38d02d4
+
+      - name: glfw
+        build-options: *x86_64-build-options
+        buildsystem: cmake-ninja
+        config-opts: &glfw-config-opts
+          - -DGLFW_BUILD_EXAMPLES:BOOL=OFF
+          - -DGLFW_BUILD_TESTS:BOOL=OFF
+          - -DGLFW_BUILD_DOCS:BOOL=OFF
+        sources: &glfw-sources
+          - type: git
+            url: https://github.com/glfw/glfw.git
+            tag: 3.3.8
+            commit: 7482de6071d21db77a7236155da44c172a7f6c9e
+
+      - name: nlohmann-json
+        build-options: *x86_64-build-options
+        buildsystem: cmake-ninja
+        config-opts:
+          - -DJSON_BuildTests:BOOL=OFF
+        sources:
+          - type: git
+            url: https://github.com/nlohmann/json.git
+            tag: v3.11.2
+            commit: bc889afb4c5bf1c0d8ee29ef35eaaf4c8bef8a5d
+
       - name: libNVCtrl
         build-options: *x86_64-build-options
         no-autogen: true
@@ -94,6 +146,23 @@ modules:
     config-opts: *mangohud-config-opts
     sources: *mangohud-sources
     modules:
+
+      - name: glew-32bit
+        build-options: *i386-build-options
+        no-autogen: true
+        make-args: *glew-make-args
+        make-install-args: *glew-make-args
+        sources: *glew-sources
+        modules:
+          - name: glu-32bit
+            build-options: *i386-build-options
+            sources: *glu-sources
+
+      - name: glfw-32bit
+        build-options: *i386-build-options
+        buildsystem: cmake-ninja
+        config-opts: *glfw-config-opts
+        sources: *glfw-sources
 
       - name: libNVCtrl-32bit
         build-options: *i386-build-options
