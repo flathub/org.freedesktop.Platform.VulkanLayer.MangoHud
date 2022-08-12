@@ -11,19 +11,34 @@ sdk-extensions:
 build-options:
   prefix: /usr/lib/extensions/vulkan/MangoHud
   prepend-path: /usr/lib/extensions/vulkan/MangoHud/bin
-  prepend-pkg-config-path: /usr/lib/extensions/vulkan/MangoHud/lib/pkgconfig
+  prepend-pkg-config-path: /usr/lib/extensions/vulkan/MangoHud/share/pkgconfig
   env:
     PYTHONPATH: /usr/lib/extensions/vulkan/MangoHud/lib/python3.9/site-packages
     C_INCLUDE_PATH: /usr/lib/extensions/vulkan/MangoHud/include
     CPLUS_INCLUDE_PATH: /usr/lib/extensions/vulkan/MangoHud/include
   strip: true
+x-arch-build-options:
+  x86_64: &x86_64-build-options
+    libdir: /usr/lib/extensions/vulkan/MangoHud/lib/x86_64-linux-gnu
+    prepend-pkg-config-path: /usr/lib/extensions/vulkan/MangoHud/lib/x86_64-linux-gnu/pkgconfig
+    ldflags: -Wl,-rpath=/usr/lib/extensions/vulkan/MangoHud/lib/x86_64-linux-gnu
+    env:
+      FLATPAK_LIBDIR: /usr/lib/extensions/vulkan/MangoHud/lib/x86_64-linux-gnu
+  i386: &i386-build-options
+    libdir: /usr/lib/extensions/vulkan/MangoHud/lib/i386-linux-gnu
+    prepend-pkg-config-path: /usr/lib/extensions/vulkan/MangoHud/lib/i386-linux-gnu/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
+    ldflags: -Wl,-rpath=/usr/lib/extensions/vulkan/MangoHud/lib/i386-linux-gnu
+    append-path: /usr/lib/sdk/toolchain-i386/bin
+    env:
+      FLATPAK_LIBDIR: /usr/lib/extensions/vulkan/MangoHud/lib/i386-linux-gnu
+      CC: ccache i686-unknown-linux-gnu-gcc
+      CXX: ccache i686-unknown-linux-gnu-g++
 cleanup:
   - /include
 modules:
 
   - name: MangoHud
-    build-options:
-      libdir: lib/x86_64-linux-gnu
+    build-options: *x86_64-build-options
     buildsystem: meson
     config-opts: &mangohud-config-opts
       - -Duse_system_vulkan=enabled
@@ -47,14 +62,12 @@ modules:
       - python3-mako.json
 
       - name: libNVCtrl
-        build-options:
-          env:
-            LIB: lib/x86_64-linux-gnu
+        build-options: *x86_64-build-options
         no-autogen: true
         no-make-install: true
         build-commands: &libNVCtrl-build-commands
-          - mkdir -p ${FLATPAK_DEST}/$LIB
-          - cp -a libXNVCtrl.so* ${FLATPAK_DEST}/$LIB/
+          - mkdir -p ${FLATPAK_LIBDIR}
+          - cp -a libXNVCtrl.so* ${FLATPAK_LIBDIR}
           - install -D *.h -t ${FLATPAK_DEST}/include/NVCtrl
         subdir: src/libXNVCtrl
         sources: &libNVCtrl-sources
@@ -71,25 +84,14 @@ modules:
               version-query: .[0].name
 
   - name: MangoHud-32bit
-    build-options:
-      prepend-pkg-config-path: /usr/lib/i386-linux-gnu/pkgconfig
-      append-path: /usr/lib/sdk/toolchain-i386/bin
-      env:
-        CC: ccache i686-unknown-linux-gnu-gcc
-        CXX: ccache i686-unknown-linux-gnu-g++
-      libdir: lib/i386-linux-gnu
+    build-options: *i386-build-options
     buildsystem: meson
     config-opts: *mangohud-config-opts
     sources: *mangohud-sources
     modules:
 
       - name: libNVCtrl-32bit
-        build-options:
-          append-path: /usr/lib/sdk/toolchain-i386/bin
-          env:
-            CC: ccache i686-unknown-linux-gnu-gcc
-            CXX: ccache i686-unknown-linux-gnu-g++
-            LIB: lib/i386-linux-gnu
+        build-options: *i386-build-options
         no-autogen: true
         no-make-install: true
         build-commands: *libNVCtrl-build-commands
