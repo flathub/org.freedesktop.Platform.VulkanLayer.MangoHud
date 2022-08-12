@@ -38,13 +38,18 @@ cleanup:
 modules:
 
   - name: MangoHud
-    build-options: *x86_64-build-options
+    build-options:
+      arch:
+        x86_64: *x86_64-build-options
+      config-opts:
+        - -Dmangoapp=true
     buildsystem: meson
     config-opts: &mangohud-config-opts
       - -Duse_system_vulkan=enabled
       - -Dvulkan_datadir=/usr/share
       - -Dwith_xnvctrl=enabled
       - -Dappend_libdir_mangohud=false
+      - -Dmangoapp_layer=true
     sources: &mangohud-sources
       - type: archive
         url: https://github.com/flightlessmango/MangoHud/releases/download/v0.6.8/MangoHud-v0.6.8-Source.tar.xz
