@@ -148,7 +148,14 @@ modules:
     modules:
 
       - name: glew-32bit
-        build-options: *i386-build-options
+        build-options: 
+          arch:
+            x86_64: *i386-build-options
+          make-args:
+            - CC=ccache i686-unknown-linux-gnu-gcc
+            - CXX=ccache i686-unknown-linux-gnu-g++
+            - LD=i686-unknown-linux-gnu-gcc
+            - AR=i686-unknown-linux-gnu-ar
         no-autogen: true
         make-args: *glew-make-args
         make-install-args: *glew-make-args
