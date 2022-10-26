@@ -1,0 +1,26 @@
+From f62faa1bf4cdd207fa7262e498d316926ceaaecd Mon Sep 17 00:00:00 2001
+From: guihkx <guihkx@users.noreply.github.com>
+Date: Wed, 26 Oct 2022 04:28:57 -0300
+Subject: [PATCH] Downgrade required meson version to 0.58.0
+
+This is necessary to build on the 21.08 branch.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index e3e5813..fb71f58 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2,7 +2,7 @@ project('MangoHud',
+   ['c', 'cpp'],
+   version : 'v0.6.8',
+   license : 'MIT',
+-  meson_version: '>=0.60.0',
++  meson_version: '>=0.58.0',
+   default_options : ['buildtype=release', 'c_std=c99', 'cpp_std=c++14', 'warning_level=2']
+ )
+ 
+-- 
+2.38.1
+
