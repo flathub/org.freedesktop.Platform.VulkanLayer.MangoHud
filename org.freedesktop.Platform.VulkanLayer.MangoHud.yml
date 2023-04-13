@@ -57,8 +57,8 @@ modules:
       - -Dmangoapp_layer=true
     sources: &mangohud-sources
       - type: archive
-        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.6.8/MangoHud-v0.6.8-Source.tar.xz
-        sha256: 9c64ccab1a72ba1dc61cb88d2fbcce1d343fc6b6cdf22c2cc2859bfb2da66fd4
+        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.6.9/MangoHud-v0.6.9-Source.tar.xz
+        sha256: a6e59ad810a30cd0a6a62ac5a7b5d8a10abab48eb1312e084ca7c81472d76573
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flightlessmango/MangoHud/releases
@@ -148,7 +148,7 @@ modules:
     modules:
 
       - name: glew-32bit
-        build-options: 
+        build-options:
           arch:
             x86_64: *i386-build-options
           make-args:
