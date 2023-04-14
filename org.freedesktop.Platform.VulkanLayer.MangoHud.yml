@@ -50,8 +50,6 @@ modules:
         - -Dmangoapp=true
     buildsystem: meson
     config-opts: &mangohud-config-opts
-      - -Duse_system_vulkan=enabled
-      - -Dvulkan_datadir=/usr/share
       - -Dwith_xnvctrl=enabled
       - -Dappend_libdir_mangohud=false
       - -Dmangoapp_layer=true
