@@ -1,0 +1,25 @@
+diff --git a/src/mangohud.json.in b/src/mangohud.json.in
+index 3a19ef9..fd3dd2f 100644
+--- a/src/mangohud.json.in
++++ b/src/mangohud.json.in
+@@ -1,7 +1,7 @@
+ {
+     "file_format_version" : "1.0.0",
+     "layer" : {
+-      "name": "VK_LAYER_MANGOHUD_overlay",
++      "name": "VK_LAYER_MANGOHUD_overlay_@cpu_family@",
+       "type": "GLOBAL",
+       "api_version": "1.3.0",
+       "library_path": "@ld_libdir_mangohud_abs@/libMangoHud.so",
+diff --git a/src/meson.build b/src/meson.build
+index 15c8033..e1cdbea 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -13,6 +13,7 @@ conf_data = configuration_data()
+ 
+ conf_data.set('ld_libdir_mangohud_abs', libdir_mangohud)
+ conf_data.set('ld_libdir_mangohud', ld_libdir_mangohud)
++conf_data.set('cpu_family', host_machine.cpu_family())
+ 
+ overlay_shaders = [
+   'overlay.frag',
