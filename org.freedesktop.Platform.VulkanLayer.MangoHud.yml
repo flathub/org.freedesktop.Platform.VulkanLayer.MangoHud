@@ -35,6 +35,9 @@ x-arch-build-options:
       CXX: ccache i686-unknown-linux-gnu-g++
 cleanup:
   - /include
+  - /share/cmake
+  - /share/doc
+  - /share/man
   - /share/pkgconfig
   - /lib/*/pkgconfig
   - /lib/*/cmake
