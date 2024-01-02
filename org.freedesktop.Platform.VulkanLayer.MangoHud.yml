@@ -59,8 +59,8 @@ modules:
       - -Dmangoapp_layer=true
     sources: &mangohud-sources
       - type: archive
-        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.7.0/MangoHud-v0.7.0-Source.tar.xz
-        sha256: 05047cfdaf1668542e0c89bc999753ff8cea10b3d90f0a171788e5769a459832
+        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.7.0-rc1/MangoHud-v0.7.0-rc1-Source.tar.xz
+        sha256: c28c49f5ce10a5bdd4bdfd9ad87faab79c13bf1c3a4bd6bcbc2353e67232434d
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flightlessmango/MangoHud/releases
