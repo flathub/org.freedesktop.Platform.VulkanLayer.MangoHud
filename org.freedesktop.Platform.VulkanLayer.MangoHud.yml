@@ -43,7 +43,6 @@ cleanup:
   - /lib/*/cmake
   - /lib/*/*.a
   - /lib/*/*.la
-  - /bin/mangoplot
 modules:
 
   - name: MangoHud
@@ -57,6 +56,7 @@ modules:
       - -Dwith_xnvctrl=enabled
       - -Dappend_libdir_mangohud=false
       - -Dmangoapp_layer=true
+      - -Dmangoplot=disabled
     sources: &mangohud-sources
       - type: archive
         url: https://github.com/flightlessmango/MangoHud/releases/download/v0.7.1/MangoHud-v0.7.1-1-Source.tar.xz
