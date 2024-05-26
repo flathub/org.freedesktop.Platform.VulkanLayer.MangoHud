@@ -57,8 +57,8 @@ modules:
       - -Dmangoplot=disabled
     sources: &mangohud-sources
       - type: archive
-        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.7.1/MangoHud-v0.7.1-1-Source.tar.xz
-        sha256: cfcc907c91b51f1fef4ec3f1cd52e2ff1b5caf207cdcff71869b94cefe39d208
+        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.7.2/MangoHud-v0.7.2-Source.tar.xz
+        sha256: 114ad3ea87b1db7358816c7b8e7843aaee356ff048b9e15d6fff02d89414841b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flightlessmango/MangoHud/releases
