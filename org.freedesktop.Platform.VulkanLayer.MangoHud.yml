@@ -68,8 +68,6 @@ modules:
           version-query: |
             map(select(.tag_name | startswith("v"))) | first |
             .tag_name | sub("^[vV]"; "")
-      - type: patch
-        path: patches/0001-reset_fps_metrics-check-that-metrics-is-inited-first.patch
     modules:
       - name: glew
         build-options: *x86_64-build-options
