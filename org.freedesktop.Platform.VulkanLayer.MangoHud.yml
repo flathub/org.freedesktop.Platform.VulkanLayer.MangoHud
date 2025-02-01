@@ -53,7 +53,6 @@ modules:
     config-opts: &mangohud-config-opts
       - -Dwith_xnvctrl=enabled
       - -Dappend_libdir_mangohud=false
-      - -Dmangoapp_layer=true
       - -Dmangoplot=disabled
     sources: &mangohud-sources
       - type: archive
