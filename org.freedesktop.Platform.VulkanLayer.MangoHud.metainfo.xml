@@ -13,8 +13,11 @@
   <project_license>MIT</project_license>
   <metadata_license>CC0-1.0</metadata_license>
   <releases>
-    <release version="0.7.2" date="2024-05-26">
+    <release version="0.8.0-rc2" date="2025-02-01">
       <description></description>
+    </release>
+    <release version="0.7.2" date="2024-05-26">
+      <description/>
     </release>
     <release version="0.7.1" date="2024-02-08"/>
     <release version="0.7.0" date="2023-09-27"/>
