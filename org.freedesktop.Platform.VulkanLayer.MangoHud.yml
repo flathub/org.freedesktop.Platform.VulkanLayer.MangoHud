@@ -101,8 +101,8 @@ modules:
         sources: &glfw-sources
           - type: git
             url: https://github.com/glfw/glfw.git
-            tag: 3.3.8
-            commit: 7482de6071d21db77a7236155da44c172a7f6c9e
+            tag: 3.4
+            commit: 7b6aead9fb88b3623e3b3725ebb42670cbe4c579
 
       - name: nlohmann-json
         build-options: *x86_64-build-options
