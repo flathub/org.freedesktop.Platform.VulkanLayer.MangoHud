@@ -102,7 +102,7 @@ modules:
         sources: &glfw-sources
           - type: git
             url: https://github.com/glfw/glfw.git
-            tag: 3.4
+            tag: '3.4'
             commit: 7b6aead9fb88b3623e3b3725ebb42670cbe4c579
 
       - name: nlohmann-json
