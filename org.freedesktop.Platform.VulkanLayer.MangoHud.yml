@@ -51,7 +51,6 @@ modules:
         - -Dmangoapp=true
     buildsystem: meson
     config-opts: &mangohud-config-opts
-      - -Dwith_xnvctrl=enabled
       - -Dappend_libdir_mangohud=false
       - -Dmangoplot=disabled
     sources: &mangohud-sources
