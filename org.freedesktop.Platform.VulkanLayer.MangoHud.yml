@@ -79,28 +79,30 @@ modules:
             url: https://github.com/glfw/glfw.git
             tag: '3.4'
             commit: 7b6aead9fb88b3623e3b3725ebb42670cbe4c579
+            x-checker-data:
+              type: git
+              tag-pattern: ^([\d.]+)$
 
       - name: libNVCtrl
         build-options: *x86_64-build-options
         no-autogen: true
         no-make-install: true
         build-commands: &libNVCtrl-build-commands
-          - mkdir -p ${FLATPAK_LIBDIR}
-          - cp -a libXNVCtrl.so* ${FLATPAK_LIBDIR}
-          - install -D *.h -t ${FLATPAK_DEST}/include/NVCtrl
+          - install -Dpm0644 -t ${FLATPAK_LIBDIR}/ libXNVCtrl.so* 
+          - install -Dpm0644 -t ${FLATPAK_DEST}/include/NVCtrl *.h 
         subdir: src/libXNVCtrl
         sources: &libNVCtrl-sources
           - type: archive
             archive-type: tar
-            url: https://api.github.com/repos/NVIDIA/nvidia-settings/tarball/refs/tags/470.63.01
-            sha256: 0ede63515851d85ac0d1ed5f00e355f539968e6d1fd226120a27b2c66c3575de
-          - type: patch
-            path: patches/libxnvctrl_so_0.patch
+            url: https://api.github.com/repos/NVIDIA/nvidia-settings/tarball/refs/tags/590.48.01
+            sha256: 7bd0aade78fda0021810c513380d39df3a0f03a7d0f49abfb9bff4ab8cc93b19
             x-checker-data:
               type: json
               url: https://api.github.com/repos/NVIDIA/nvidia-settings/tags
               url-query: .[0].tarball_url
               version-query: .[0].name
+          - type: patch
+            path: patches/libxnvctrl_so_0.patch
 
   - name: MangoHud-32bit
     build-options: *i386-build-options
