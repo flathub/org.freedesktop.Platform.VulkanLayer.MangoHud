@@ -95,15 +95,15 @@ modules:
         sources: &libNVCtrl-sources
           - type: archive
             archive-type: tar
-            url: https://api.github.com/repos/NVIDIA/nvidia-settings/tarball/refs/tags/470.63.01
-            sha256: 0ede63515851d85ac0d1ed5f00e355f539968e6d1fd226120a27b2c66c3575de
+            url: https://api.github.com/repos/NVIDIA/nvidia-settings/tarball/refs/tags/595.71.05
+            sha256: f9ad638790c1a80e228f2d3f128c34e626dc4ac3103dd0ec0df9524a8b994276
             x-checker-data:
               type: json
               url: https://api.github.com/repos/NVIDIA/nvidia-settings/tags
               url-query: .[0].tarball_url
               version-query: .[0].name
               versions:
-                '<': '500'
+                <: '500'
           - type: patch
             path: patches/libxnvctrl_so_0.patch
 
