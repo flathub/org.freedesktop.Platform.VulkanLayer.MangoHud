@@ -55,8 +55,8 @@ modules:
       - -Dmangoplot=disabled
     sources: &mangohud-sources
       - type: archive
-        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.8.3/MangoHud-v0.8.3-Source.tar.xz
-        sha256: e810ac73163468533ddb7c74b681f1de4992a3d785dce294fee9933ec8956b05
+        url: https://github.com/flightlessmango/MangoHud/releases/download/v0.8.4/MangoHud-v0.8.4-Source.tar.xz
+        sha256: bbe5a2b976313c53f21dc24b98bbed03226589460a0cce20d923cb2c36c9d8b0
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flightlessmango/MangoHud/releases
@@ -95,15 +95,15 @@ modules:
         sources: &libNVCtrl-sources
           - type: archive
             archive-type: tar
-            url: https://api.github.com/repos/NVIDIA/nvidia-settings/tarball/refs/tags/470.63.01
-            sha256: 0ede63515851d85ac0d1ed5f00e355f539968e6d1fd226120a27b2c66c3575de
+            url: https://api.github.com/repos/NVIDIA/nvidia-settings/tarball/refs/tags/610.43.02
+            sha256: b459e569fd1e0ad8cf0c5ac044c58e3f4a13da324b7d6c28b3f4e605651443f8
             x-checker-data:
               type: json
               url: https://api.github.com/repos/NVIDIA/nvidia-settings/tags
               url-query: .[0].tarball_url
               version-query: .[0].name
               versions:
-                '<': '500'
+                <: '500'
           - type: patch
             path: patches/libxnvctrl_so_0.patch
 
