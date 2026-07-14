@@ -90,15 +90,18 @@ modules:
         build-commands: &libNVCtrl-build-commands
           - mkdir -p ${FLATPAK_LIBDIR}
           - cp -a libXNVCtrl.so* ${FLATPAK_LIBDIR}
-          - install -D *.h -t ${FLATPAK_DEST}/include/NVCtrl
+          - install -D -t ${FLATPAK_DEST}/include/NVCtrl *.h
         subdir: src/libXNVCtrl
         sources: &libNVCtrl-sources
-          - type: archive
-            archive-type: tar
-            url: https://api.github.com/repos/NVIDIA/nvidia-settings/tarball/refs/tags/470.63.01
-            sha256: 0ede63515851d85ac0d1ed5f00e355f539968e6d1fd226120a27b2c66c3575de
+          - type: git
+            url: https://github.com/NVIDIA/nvidia-settings.git
+            tag: '470.256.02'
+            commit: c024dd62c58957091430f1400b835400f91d3eaf
+            x-checker-data:
+              type: git
+              tag-pattern: ^4\d\d(?:\.\d+)*$
           - type: patch
-            path: patches/libxnvctrl_so_0.patch
+            path: patches/0001-Flatpak-Build-libXNVCtrl.so.0.patch
 
   - name: MangoHud-32bit
     build-options: *i386-build-options
