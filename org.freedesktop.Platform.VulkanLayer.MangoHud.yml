@@ -77,8 +77,8 @@ modules:
         sources: &glfw-sources
           - type: git
             url: https://github.com/glfw/glfw.git
-            tag: '3.4'
-            commit: 7b6aead9fb88b3623e3b3725ebb42670cbe4c579
+            tag: 3.5.1
+            commit: d9d6f0f1f967807ffade6598ea9a631ebaf37a56
             x-checker-data:
               type: git
               tag-pattern: ^([\d.]+)$
@@ -95,7 +95,7 @@ modules:
         sources: &libNVCtrl-sources
           - type: git
             url: https://github.com/NVIDIA/nvidia-settings.git
-            tag: '470.256.02'
+            tag: 470.256.02
             commit: c024dd62c58957091430f1400b835400f91d3eaf
             x-checker-data:
               type: git
